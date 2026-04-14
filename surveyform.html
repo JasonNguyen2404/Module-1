@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu khảo sát sự hàn lòng của khách hàng</title>
+</head>
+<body>
+    Xin chào quý khách, vui lòng giúp chúng tôi cải thiện dịch vụ tốt hơn
+    <h1>1. Thông tin chung</h1>
+    <ul>
+        <li>Họ tên: <input type="text" name="name"></li>
+        <li>Tuổi: <input type="number" name="age"></li>
+        <li>Giới tính: 
+            <input type="radio" name="gender" value="male"> Nam
+            <input type="radio" name="gender" value="female"> Nữ
+        </li>
+    </ul>
+    <h2>2. Nội dung khảo sát</h2>
+    <ul>
+        <li>Đánh giá chất lượng sản phẩm: 
+            <select name="quality">
+                <option value="excellent">Tuyệt vời</option>
+                <option value="good">Tốt</option>
+                <option value="average">Trung bình</option>
+                <option value="poor">Kém</option>
+            </select>
+        </li>
+        <li>Thái độ phục vụ: 
+            <select name="service">
+                <option value="excellent">Thân thiện</option>
+                <option value="good">Chuyên nghiệp</option>
+                <option value="average">Bình thường</option>
+                <option value="poor">Cần cải thiện</option>
+            </select>
+        </li>
+        <li>Tốc độ phục vụ: 
+            <select name="speed">
+                <option value="excellent">Rất nhanh</option>
+                <option value="good">Nhanh</option>
+                <option value="average">Trung bình</option>
+                <option value="poor">Chậm</option>
+            </select>
+        </li>
+        <li>Ý kiến đóng góp khác:
+            <textarea name="feedback" id="feedback"></textarea>
+        </li>
+    </ul>
+</body>
+</html>
