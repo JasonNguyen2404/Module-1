@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img onclick="chuyenanh(this.id)" src="Puzzle/logo Ars.png" id="ars">
+    <img onclick="chuyenanh(this.id)" src="Puzzle/logo MU.webp" id="mu">
+    <img onclick="chuyenanh(this.id)" src="Puzzle/MC.webp" id="mc">
+
+</body>
+<style>
+    img {
+        width: 200px;
+        height: 200px;
+        margin: 10px;
+    }
+</style>
+<script>
+    function chuyenanh(id) {
+        let ars = document.getElementById("ars");
+        let mu = document.getElementById("mu");
+        let mc = document.getElementById("mc");
+
+        if (id === "ars") {
+            ars.src = "Puzzle/logo MU.webp";
+        } else if (id === "mu") {
+            mu.src = "Puzzle/logo MC.webp";
+        } else if (id === "mc") {
+            mc.src = "Puzzle/logo Ars.png";
+        }else {
+            console.log("Không hợp lệ");
+        }
+    }
+</script>
+</html>
