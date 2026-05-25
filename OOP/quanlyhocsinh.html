@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý học sinh</title>
+    <script src="student.js"></script>
+</head>
+<body>
+    <h1>Quản lý học sinh</h1>
+    <form>
+        <fieldset>
+            <legend>Thông tin học sinh</legend>
+        <input type="text" id="name" name="name" placeholder="Tên học sinh" required><br><br>
+        <input type="number" id="age" name="age" placeholder="Tuổi" required><br><br>
+        <input type="number" id="mathScore" name="mathScore" placeholder="Điểm toán"><br><br>
+        <input type="number" id="physicsScore" name="physicsScore" placeholder="Điểm lý" required><br><br>
+        <input type="number" id="chemistryScore" name="chemistryScore" placeholder="Điểm hóa" required><br><br>
+        <button type="button" onclick="addStudent()">Thêm học sinh</button>
+        </fieldset>
+    </form>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Tên học sinh</th>
+            <th>Tuổi</th>
+            <th>Điểm toán</th>
+            <th>Điểm lý</th>
+            <th>Điểm hóa</th>
+            <th>Tổng điểm</th>
+            <th>Thao tác</th>
+        </tr>
+        </thead>
+        <tbody id="student-list">
+        <tr>
+            <td>Nguyễn Văn A</td>
+            <td>15</td>
+            <td>8</td>
+            <td>7</td>
+            <td>9</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <td>Trần Thị B</td>
+            <td>16</td>
+            <td>6</td>
+            <td>8</td>
+            <td>7</td>
+            <td>21</td>
+        </tr>
+        <tr>
+            <td>Đỗ Đình C</td>
+            <td>15</td>
+            <td>9</td>
+            <td>4</td>
+            <td>6</td>
+            <td>19</td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+        let students = [];
+        let tblstudents = document.getElementById("student-list");
+        function showall() {
+            let str = "";
+            for (let i = 0; i < students.length; i++) {
+                str += "<tr>";
+                str += "<td>" + students[i].name + "</td>";
+                str += "<td>" + students[i].age + "</td>";
+                str += "<td>" + students[i].mathScore + "</td>";
+                str += "<td>" + students[i].physicsScore + "</td>";
+                str += "<td>" + students[i].chemistryScore + "</td>";
+                str += "<td>" + students[i].getsum() + "</td>";
+                str += "</tr>";
+            }
+            tblstudents.innerHTML = str;
+        }
+        function addStudent() {
+            let name = document.getElementById("name").value;
+            let age = parseInt(document.getElementById("age").value);
+            let mathScore = parseFloat(document.getElementById("mathScore").value);
+            let physicsScore = parseFloat(document.getElementById("physicsScore").value);
+            let chemistryScore = parseFloat(document.getElementById("chemistryScore").value);
+            let student = new Student(name, age, mathScore, physicsScore, chemistryScore);
+            students.push(student);
+            showall();
+        }
+
+    </script>
+</body>
+</html>

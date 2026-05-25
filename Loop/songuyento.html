@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function checksonguyento(n)
+        let i = 2;
+        let flag = true;
+        while (i < n) {
+            if (n % i == 0) {
+                flag = false;
+                break;
+            }
+            i++;
+        }
+        return flag;
+        }
+        function listprime(n) {
+            let count = 0;
+            let i = 2;
+            while (count < n) {
+                if (checksonguyento(i)) {
+                    console.log(i);
+                    count++;
+                }
+                i++;
+            }
+        }
+    </script>
+</body>
+</html>
