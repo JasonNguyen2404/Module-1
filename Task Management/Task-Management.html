@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    class Task {
+        constructor(name, task, status, deadline) {
+            this.name = name;
+            this.task = task;
+            this.status = status;
+            this.deadline = deadline;
+        }
+    }
+</script>
+<body>
+    <h1>Task Management</h1>
+    <input type="text" id="name" placeholder="Name">
+    <input type="text" id="task" placeholder="Task">
+    <select id="status">
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+    </select>
+    <input type="date" id="deadline">
+    <button onclick="addTask()">Add Task</button>
+    <table>
+        <thead>
+            <tr>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Task</th>
+                <th>Status</th>
+                <th>Deadline</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="taskTable">
+            <!-- <tr>
+                <td>1</td>
+                <td>Ung Hoang Phuc</td>
+                <td>Tha nhu the</td>
+                <td>In Progress</td>
+                <td>2026-07-15</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Karik</td>
+                <td>Vi me anh bat chia tay</td>
+                <td>Not Started</td>
+                <td>2026-08-15</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Son Tung MTP</td>
+                <td>Lac troi</td>
+                <td>Completed</td>
+                <td>2026-09-30</td>
+            </tr> -->
+        </tbody>
+    </table>
+    <script>
+        let now = new Date();
+        document.getElementById("deadline").value = now.toISOString().split("T")[0];
+
+        let tasks = [];
+
+        let task1 = new Task("Ung Hoang Phuc", "Tha nhu the", "In Progress", "2026-07-15");
+        let task2 = new Task("Karik", "Vi me anh bat chia tay", "Not Started", "2026-08-15");
+        let task3 = new Task("Son Tung MTP", "Lac troi", "Completed", "2026-09-30");
+        tasks.push(task1, task2, task3);
+        showTable();
+        function showTable() {
+            let table = document.getElementById("taskTable");
+            table.innerHTML = "";
+
+            for (let i = 0; i < tasks.length; i++) {
+                table.innerHTML += `
+                    <tr>
+                    <td>${i + 1}</td>
+                    <td>${tasks[i].name}</td>
+                    <td>${tasks[i].task}</td>
+                    <td>${tasks[i].status}</td>
+                    <td>${tasks[i].deadline}</td>
+                    <td><button id="delete-btn" onclick="deleteTask(${i})">Delete</button></td>
+                    </tr>
+                `;
+            }        }
+
+        function addTask() {
+            let name = document.getElementById("name").value;
+            let task = document.getElementById("task").value;
+            let status = document.getElementById("status").value;
+            let deadline = document.getElementById("deadline").value;
+            if (!name || !task || !status || !deadline) {
+                alert("Please fill in all fields.");
+                return;
+            }
+            let newTask = { name, task, status, deadline };
+            // let newTask = new Task(name, task, status, deadline);
+
+            tasks.push(newTask);
+            showTable();
+        }
+        function deleteTask(index) {
+            let confirmDelete = confirm("Are you sure you want to delete this task?");
+            if (!confirmDelete) {
+                return;
+            }
+            tasks.splice(index, 1);
+            showTable();
+        }
+    </script>
+</body>
+</html>
