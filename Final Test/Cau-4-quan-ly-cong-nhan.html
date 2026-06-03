@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý công nhân</title>
+</head>
+<body>
+    <h2>Quản lý công nhân</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ và tên</th>
+                <th>Ngày sinh</th>
+                <th>Địa chỉ</th>
+                <th>Lương</th>
+                <th>Chức vụ</th>
+        </tr>
+    </thead>
+    <tbody id="workerTable"></tbody>
+</table>
+<script>
+    class CongNhan {
+        constructor(STT, hoTen, ngaySinh, diaChi, luong, chucVu) {
+            this.stt = STT;
+            this.hoTen = hoTen;
+            this.ngaySinh = ngaySinh;
+            this.diaChi = diaChi;
+            this.luong = luong;
+            this.chucVu = chucVu;
+        }
+    }
+    let danhSach = [
+        new CongNhan(1, "Son Tung MTP", "01/05/1995", "Hung Yen", 5000000, "Truong phong"),
+        new CongNhan(2, "Only C", "15/05/1992", "Ho Chi Minh City", 4500000, "Pho phong"),
+        new CongNhan(3, "Justin Bieber", "20/10/1993", "Da Nang", 4000000, "Nhan vien"),
+    ]
+    danhSach.sort(function(a, b) {
+        if (a.hoTen > b.hoTen) {
+            return 1;
+        } else if (a.hoTen < b.hoTen) {
+            return -1;
+        } else {
+            return 0;
+        }
+    });
+    let table = document.getElementById("workerTable");
+
+    for (let i = 0; i < danhSach.length; i++) {
+        
+        table.innerHTML += `
+        <tr>
+            <td>${danhSach[i].stt}</td>
+            <td>${danhSach[i].hoTen}</td>
+            <td>${danhSach[i].ngaySinh}</td>
+            <td>${danhSach[i].diaChi}</td>
+            <td>${danhSach[i].luong}</td>
+            <td>${danhSach[i].chucVu}</td>
+        </tr>
+    `;
+    }
+</script>
+</body>
+</html>
